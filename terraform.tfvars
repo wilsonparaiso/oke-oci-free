@@ -27,7 +27,7 @@ oke_cluster_name       = "oke-free"
 oke_kubernetes_version = "v1.34.2"
 
 ##Node Pool ARM
-node_pool_arm_size   = 2
+node_pool_arm_size   = 1
 node_pool_arm_memory = 12
 node_pool_arm_ocpus  = 2
 
