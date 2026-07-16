@@ -97,23 +97,27 @@ resource "oci_core_security_list" "sl_private" {
 }
 
 resource "oci_core_subnet" "sn_oke_api_priv" {
-  compartment_id    = oci_identity_compartment.compartment.id
-  vcn_id            = oci_core_vcn.vcn_oci_free.id
-  cidr_block        = var.sn_oke_api_priv_cidr
-  display_name      = var.sn_oke_api_priv_display_name
-  dns_label         = var.sn_oke_api_priv_dns_label
-  route_table_id    = oci_core_route_table.rt_private.id
-  security_list_ids = [oci_core_security_list.sl_private.id]
-  freeform_tags     = var.tags
+  compartment_id             = oci_identity_compartment.compartment.id
+  vcn_id                     = oci_core_vcn.vcn_oci_free.id
+  cidr_block                 = var.sn_oke_api_priv_cidr
+  display_name               = var.sn_oke_api_priv_display_name
+  dns_label                  = var.sn_oke_api_priv_dns_label
+  prohibit_public_ip_on_vnic = true
+  prohibit_internet_ingress  = true
+  route_table_id             = oci_core_route_table.rt_private.id
+  security_list_ids          = [oci_core_security_list.sl_private.id]
+  freeform_tags              = var.tags
 }
 
 resource "oci_core_subnet" "sn_oke_nodes_priv" {
-  compartment_id    = oci_identity_compartment.compartment.id
-  vcn_id            = oci_core_vcn.vcn_oci_free.id
-  cidr_block        = var.sn_oke_nodes_priv_cidr
-  display_name      = var.sn_oke_nodes_priv_display_name
-  dns_label         = var.sn_oke_nodes_priv_dns_label
-  route_table_id    = oci_core_route_table.rt_private.id
-  security_list_ids = [oci_core_security_list.sl_private.id]
-  freeform_tags     = var.tags
+  compartment_id             = oci_identity_compartment.compartment.id
+  vcn_id                     = oci_core_vcn.vcn_oci_free.id
+  cidr_block                 = var.sn_oke_nodes_priv_cidr
+  display_name               = var.sn_oke_nodes_priv_display_name
+  dns_label                  = var.sn_oke_nodes_priv_dns_label
+  prohibit_public_ip_on_vnic = true
+  prohibit_internet_ingress  = true
+  route_table_id             = oci_core_route_table.rt_private.id
+  security_list_ids          = [oci_core_security_list.sl_private.id]
+  freeform_tags              = var.tags
 }
